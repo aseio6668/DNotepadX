@@ -3,6 +3,10 @@ name = "dnotepadx"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "dnotepadx"
+path = "src/main.rs"
+
 [dependencies]
 eframe = "0.28"
 egui = "0.28"
@@ -15,3 +19,8 @@ dirs = "5.0"
 [profile.release]
 opt-level = 3
 lto = true
+
+# Windows-specific configuration to hide console window
+[target.'cfg(windows)'.build-dependencies]
+
+[target.'cfg(windows)']
