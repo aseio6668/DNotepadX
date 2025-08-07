@@ -2,7 +2,7 @@
 
 A beautiful, feature-rich text editor built with Rust and egui, featuring renaissance-inspired themes and classical elegance.
 
-![Logo](dxnotepad.png) 
+![Logo](dnotepadx.png) 
 
 ## Features
 
@@ -114,3 +114,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Built with [egui](https://github.com/emilk/egui) - an immediate mode GUI library
 - Inspired by classical text editors and renaissance aesthetics
 - Font rendering powered by Rust's excellent ecosystem
+
