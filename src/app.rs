@@ -406,13 +406,14 @@ impl DNotepadX {
                 // For text editor content, use the original theme text color for proper contrast with background
                 ui.style_mut().visuals.override_text_color = Some(self.settings.theme.text());
                 
+                let available_size = ui.available_size();
                 let text_edit = TextEdit::multiline(&mut self.content)
                     .font(font_id.clone())
-                    .desired_width(f32::INFINITY)
+                    .desired_width(available_size.x.max(800.0))
                     .desired_rows(0)
                     .lock_focus(true);
 
-                let response = ui.add(text_edit);
+                let response = ui.add_sized(available_size, text_edit);
                 
                 if response.changed() {
                     self.is_modified = true;
@@ -543,7 +544,11 @@ impl eframe::App for DNotepadX {
         });
 
         egui::CentralPanel::default().show(ctx, |ui| {
-            self.text_editor(ui);
+            egui::ScrollArea::both()
+                .auto_shrink([false; 2])
+                .show(ui, |ui| {
+                    self.text_editor(ui);
+                });
         });
 
         self.settings_window(ctx);
